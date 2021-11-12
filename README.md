@@ -1,7 +1,7 @@
 # Line Following Car with IR Sensors
 Principles of Integrated Engineering, Mini Project 3
 
-Hazel, Lilo, and Jadelin
+Team Members: Hazel, Lilo, and Jadelin
 
 ## Sensor Calibration 
 SensorCalibration contain all of the code that we used to find calibration values for our sensors

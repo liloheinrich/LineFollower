@@ -1,5 +1,6 @@
 # Line Following Car with IR Sensors
 Principles of Integrated Engineering, Mini Project 3
+
 Hazel, Lilo, and Jadelin
 
 ## Sensor Calibration 

@@ -1,0 +1,55 @@
+---
+title: "Calibration_Boxplots"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+```{r}
+filename <- "calibration.csv"
+
+df_calibration <- 
+  read_csv(filename) 
+```
+```{r}
+df_calibration %>% 
+  head()
+```
+ 
+```{r}
+df_tidy <- df_calibration %>% 
+  pivot_longer(
+    cols = c(left, mid, right),
+    names_to = "sensor",
+    values_to = "reading"
+  ) %>% 
+  mutate(OnTape = ifelse(OnTape == 0,
+                         "Not On Tape", 
+                         "On Tape"))
+
+df_tidy
+```
+```{r}
+df_tidy %>%
+  # filter(OnTape == 0) %>% 
+  ggplot(aes(x = sensor, y = reading)) +
+  geom_boxplot() +
+  facet_wrap(~OnTape)
+```
+```{r}
+df_tidy %>% 
+  filter(OnTape == "On Tape") %>% 
+  group_by(sensor) %>% 
+  summarise(min_value = min(reading))
+```
+ 
+```{r}
+df_tidy %>% 
+  filter(OnTape == "Not On Tape") %>% 
+  group_by(sensor) %>% 
+  summarise(max_value = max(reading))
+```
+ 
+ 
